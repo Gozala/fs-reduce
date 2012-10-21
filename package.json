@@ -1,0 +1,33 @@
+{
+  "name": "fs-reduce",
+  "id": "fs-reduce",
+  "version": "0.0.1",
+  "description": "Reducible filesystem library",
+  "keywords": [ "fs-reduce" ],
+  "author": "Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)",
+  "homepage": "https://github.com/Gozala/fs-reduce",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gozala/fs-reduce.git",
+    "web": "https://github.com/Gozala/fs-reduce"
+  },
+  "bugs": {
+    "url": "http://github.com/Gozala/fs-reduce/issues/"
+  },
+  "dependencies": {
+    "reducers": ">=0.1.0"
+  },
+  "devDependencies": {
+    "test": ">=0.4.4",
+    "repl-utils": ">=1.0.0"
+  },
+  "main": "./fs.js",
+  "scripts": {
+    "test": "node test/test-all.js",
+    "repl": "node node_modules/repl-utils"
+  },
+  "licenses": [{
+    "type" : "MIT",
+    "url" : "https://github.com/Gozala/fs-reduce/License.md"
+  }]
+}
