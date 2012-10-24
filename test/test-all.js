@@ -1,6 +1,13 @@
-/* vim:set ts=2 sw=2 sts=2 expandtab */
-/*jshint asi: true undef: true es5: true node: true browser: true devel: true
-         forin: true latedef: false globalstrict: true*/
-
 "use strict";
 
+exports["test exists"] = require("./exists")
+exports["test make directory"] = require("./make-directory")
+exports["test read directory"] = require("./read-directory")
+exports["test remove directory"] = require("./remove-directory")
+exports["test chmod"] = require("./read-directory")
+
+
+
+
+if (require.main === module)
+  require("test").run(exports)
