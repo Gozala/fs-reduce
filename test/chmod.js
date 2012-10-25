@@ -14,7 +14,7 @@ var chmod = require("../chmod")
 var isWindows = process.platform === "win32"
 
 // Need to hijack fs.open/close to make sure that things
-// get closed once they're opened.
+// get closed once they"re opened.
 fs._open = fs.open;
 fs._openSync = fs.openSync;
 fs.open = open;
@@ -72,7 +72,7 @@ exports["test chmod"] = test(function(assert) {
 
 /*
 
-fs.open(file2, 'a', function(err, fd) {
+fs.open(file2, "a", function(err, fd) {
   if (err) {
     got_error = true;
     console.error(err.stack);
@@ -104,7 +104,7 @@ fs.open(file2, 'a', function(err, fd) {
 
 // lchmod
 if (fs.lchmod) {
-  var link = path.join(common.tmpDir, 'symbolic-link');
+  var link = path.join(common.tmpDir, "symbolic-link");
 
   try {
     fs.unlinkSync(link);
@@ -128,7 +128,7 @@ if (fs.lchmod) {
 }
 
 
-process.on('exit', function() {
+process.on("exit", function() {
   assert.equal(3, success_count);
   assert.equal(0, openCount);
   assert.equal(false, got_error);

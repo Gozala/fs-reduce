@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var makeDirectory = require("../make-directory")
 var removeDirectory = require("../remove-directory")
@@ -11,7 +11,7 @@ var fixtures = require("./fixtures")
 var capture = require("reducers/capture")
 var test = require("./helper")
 
-exports['test remove non-existing'] = test(function(assert) {
+exports["test remove non-existing"] = test(function(assert) {
   var async = false
   var file = fixtures.join("does_not_exist")
   var actual = concat(capture(removeDirectory(file), function(error) {
@@ -23,7 +23,7 @@ exports['test remove non-existing'] = test(function(assert) {
   async = true
 })
 
-exports['test remove directory'] = test(function(assert) {
+exports["test remove directory"] = test(function(assert) {
   var async = false
   var file = fixtures.join("romeve-dir")
   var actual = concat(makeDirectory(file, { sync: true }),
@@ -39,7 +39,7 @@ exports['test remove directory'] = test(function(assert) {
   async = true
 })
 
-exports['test remove directory sync'] = test(function(assert) {
+exports["test remove directory sync"] = test(function(assert) {
   var async = false
   var file = fixtures.join("romeve-dir")
   var actual = concat(makeDirectory(file, { sync: true }),

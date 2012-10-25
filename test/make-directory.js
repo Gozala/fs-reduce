@@ -66,14 +66,14 @@ exports["test can't make existing directory sync"] = test(function(assert) {
   async = true
 })
 
-exports['test make with modes'] = test(function(assert) {
+exports["test make with modes"] = test(function(assert) {
   var async = false
-  var mode = parseInt('0755', 8)
+  var mode = parseInt("0755", 8)
   var file = fixtures.join("make-mode-dir")
   var actual = concat(makeDirectory(file, { mode: mode }),
                       map([async], function($) { return async }),
                       map(stat(file), function($) {
-                        return $.mode & parseInt('777', 8)
+                        return $.mode & parseInt("777", 8)
                       }),
                       removeDirectory(file),
                       makeDirectory(file, {}),
@@ -87,14 +87,14 @@ exports['test make with modes'] = test(function(assert) {
   async = true
 })
 
-exports['test make with modes sync'] = test(function(assert) {
+exports["test make with modes sync"] = test(function(assert) {
   var async = false
-  var mode = parseInt('0755', 8)
+  var mode = parseInt("0755", 8)
   var file = fixtures.join("make-mode-dir")
   var actual = concat(makeDirectory(file, { mode: mode, sync: true }),
                       map([async], function($) { return async }),
                       map(stat(file), function($) {
-                        return $.mode & parseInt('777', 8)
+                        return $.mode & parseInt("777", 8)
                       }),
                       removeDirectory(file),
                       makeDirectory(file, {}),
