@@ -1,10 +1,10 @@
 {
   "name": "fs-reduce",
   "id": "fs-reduce",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Reducible filesystem library",
   "keywords": [
-    "fs-reduce"
+    "fs-reduce", "file", "filesystem", "reducers", "sequence", "stream"
   ],
   "author": "Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)",
   "homepage": "https://github.com/Gozala/fs-reduce",
@@ -17,7 +17,7 @@
     "url": "http://github.com/Gozala/fs-reduce/issues/"
   },
   "dependencies": {
-    "reducers": ">=0.1.0",
+    "reducers": ">=0.1.4",
     "eventual": "~0.3.0"
   },
   "devDependencies": {
