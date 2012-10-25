@@ -3,7 +3,7 @@
 var decorate = require("./util/decorate")
 var makePath = require("./util/path")
 
-var _unlink = decorate(process.binding("fs"))
+var _unlink = decorate(process.binding("fs").unlink)
 function unlink(path, options) {
   return _unlink(makePath(path), options)
 }
