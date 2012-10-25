@@ -10,7 +10,7 @@ function withOpen(path, f, options) {
   var file = open(path, options)
   // TODO: Close won't execute if part of the result is
   // consumed.
-  return concat(f(file, options), close(file))
+  return concat(f(file, options), close(file, options))
 }
 
 module.exports = withOpen
