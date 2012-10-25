@@ -2,7 +2,7 @@
 
 var when = require("eventual/when")
 var defer = require("eventual/defer")
-var deliver = require("pending/deliver")
+var deliver = require("eventual/deliver")
 var sequential = require("reducers/sequential")
 var expand = require("reducers/expand")
 var reduce = require("reducers/reduce")
