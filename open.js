@@ -12,7 +12,8 @@ var _open = decorate(process.binding("fs").open)
 function open(path, options) {
   var flags = makeFlags(options && options.flags || "r")
   var mode = makeMode(options && options.mode || DEFAULT_FILE_MODE)
-  return cache(_open(makePath(path), flags, mode, options))
+  var file = _open(makePath(path), flags, mode, options)
+  return options && options.cache === false ? file : cache(file)
 }
 
 module.exports = open
