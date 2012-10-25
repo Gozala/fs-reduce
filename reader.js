@@ -17,7 +17,7 @@ var pause = Box("Indicator that source has to be paused")
 var fsbinding = process.binding("fs")
 var _read = decorate(fsbinding.read)
 
-function readChunck(fd, buffer, start, size) {
+function readChunckAsync(fd, buffer, start, size) {
   var promise = defer()
   fsbinding.read(fd, buffer, 0, size, start, function onread(error, count) {
     deliver(promise, error || count)
@@ -25,11 +25,20 @@ function readChunck(fd, buffer, start, size) {
   return promise
 }
 
+function readChunckSync(fd, buffer, start, size) {
+  try {
+    return fsbinding.read(fd, buffer, 0, size, start)
+  } catch (error) {
+    return error
+  }
+}
+
 function reader(file, options) {
   var size = options && options.size || 64 * 1024
   var start = options && options.start >= 0 ? options.start : null
   var finish = options && options.end || Infinity
   var encoding = options && options.encoding || "binary"
+  var readChunck = options && options.sync ? readChunckSync : readChunckAsync
   var buffer = Buffer(size)
 
   return expand(file, function(fd) {
@@ -60,3 +69,5 @@ function reader(file, options) {
     })
   })
 }
+
+module.exports = reader
