@@ -13,7 +13,6 @@ var Box = require("reducers/box")
 var pause = Box("Indicator that source has to be paused")
 
 
-
 var fsbinding = process.binding("fs")
 var _read = decorate(fsbinding.read)
 
@@ -33,7 +32,7 @@ function readChunckSync(fd, buffer, start, size) {
   }
 }
 
-function reader(file, options) {
+function reader(fd, options) {
   var size = options && options.size || 64 * 1024
   var start = options && options.start >= 0 ? options.start : null
   var finish = options && options.end || Infinity
@@ -41,32 +40,30 @@ function reader(file, options) {
   var readChunck = options && options.sync ? readChunckSync : readChunckAsync
   var buffer = Buffer(size)
 
-  return expand(file, function(fd) {
-    return convert(file, function(self, next, state) {
-      function onError(e) { next(error(e)) }
-      function onChunk(count) {
-        if (count === 0)
-          return next(end(), state)
+  return convert({}, function(self, next, state) {
+    function onError(e) { next(error(e)) }
+    function onChunk(count) {
+      if (count === 0)
+        return next(end(), state)
 
-        start = start === null ? start : start + count
-        when(next(buffer.slice(0, count), state), onNext, onError)
-      }
+      start = start === null ? start : start + count
+      when(next(buffer.slice(0, count), state), onNext, onError)
+    }
 
-      function onNext(value) {
-        state = value
-        if (state && state.is === accumulated)
-          return next(end(), state.value)
-        else if (start >= finish)
-          return next(end(), state)
+    function onNext(value) {
+      state = value
+      if (state && state.is === accumulated)
+        return next(end(), state.value)
+      else if (start >= finish)
+        return next(end(), state)
 
-        if (state && state.is == pause)
-          return state
+      if (state && state.is == pause)
+        return state
 
-        when(readChunck(fd, buffer, start, size), onChunk, onError)
-      }
+      when(readChunck(fd, buffer, start, size), onChunk, onError)
+    }
 
-      onNext(state)
-    })
+    onNext(state)
   })
 }
 

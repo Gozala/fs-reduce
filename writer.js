@@ -30,19 +30,17 @@ function writeChunckSync(fd, chunk, start, offset) {
   }
 }
 
-function writer(file, options) {
+function writer(fd, options) {
   options = options || {}
   var start = options.start || null
   var input = options.input
   var sync = options.sync
-  return sequential(expand(file, function(fd) {
-    return reduce(input, eventual(function(wrote, chunk) {
-      var buffer = Buffer.isBuffer(chunk) ? chunk : Buffer(chunk)
-      return !buffer.length ? buffer.length :
-             sync ? writeChunckSync(fd, buffer, start, wrote) :
-             writeChunck(fd, buffer, start, wrote)
-    }), 0)
-  }))
+  return reduce(input, eventual(function(wrote, chunk) {
+    var buffer = Buffer.isBuffer(chunk) ? chunk : Buffer(chunk)
+    return !buffer.length ? wrote :
+           sync ? writeChunckSync(fd, buffer, start, wrote) :
+           writeChunck(fd, buffer, start, wrote)
+  }), 0)
 }
 
 module.exports = writer
