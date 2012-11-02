@@ -1,7 +1,7 @@
 {
   "name": "fs-reduce",
   "id": "fs-reduce",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Reducible filesystem library",
   "keywords": [
     "fs-reduce", "file", "filesystem", "reducers", "sequence", "stream"
