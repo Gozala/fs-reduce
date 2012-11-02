@@ -17,7 +17,7 @@
     "url": "http://github.com/Gozala/fs-reduce/issues/"
   },
   "dependencies": {
-    "reducers": ">=0.1.4",
+    "reducers": "git://github.com/Gozala/reducers.git#experiment/future",
     "eventual": "~0.3.0"
   },
   "devDependencies": {
