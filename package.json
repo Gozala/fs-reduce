@@ -1,7 +1,7 @@
 {
   "name": "fs-reduce",
   "id": "fs-reduce",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Reducible filesystem library",
   "keywords": [
     "fs-reduce",
@@ -22,12 +22,12 @@
     "url": "http://github.com/Gozala/fs-reduce/issues/"
   },
   "dependencies": {
-    "reducers": "~1.0.0",
-    "eventual": "~0.3.0"
+    "reducers": "~1.0.3",
+    "eventual": "~1.0.0"
   },
   "devDependencies": {
-    "test": ">=0.4.4",
-    "repl-utils": ">=1.0.0"
+    "test": "~0.5.2",
+    "repl-utils": "~2.0.1"
   },
   "main": "./fs.js",
   "scripts": {
