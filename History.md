@@ -1,5 +1,10 @@
 # Changes
 
+## 0.5.0 / 2012-11-24
+
+  - Upgrade to reducers@2.0 and reducibles@1.0
+  - Switch to test helper from reducers.
+
 ## 0.2.1 / 2012-11-10
 
   - Update dependencies
