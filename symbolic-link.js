@@ -11,7 +11,7 @@ function preprocessSymlinkDestination(path, type) {
          // Junctions paths need to be absolute and \\?\-prefixed.
          type === "junction" ? makePath(path) :
          // Windows symlinks don't tolerate forward slashes.
-         ('' + path).replace(/\//g, "\\")
+         ("" + path).replace(/\//g, "\\")
 }
 
 function symbolicLink(destination, path, options) {

@@ -2,6 +2,7 @@
 
 var decorate = require("./util/decorate")
 var makePath = require("./util/path")
+
 var binding = process.binding("fs")
 
 // Make stat object stat object return
