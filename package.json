@@ -28,7 +28,7 @@
     "cache-reduce": "~0.1.1"
   },
   "devDependencies": {
-    "test": "~0.5.2",
+    "test": "~0.6.0",
     "repl-utils": "~2.0.1"
   },
   "main": "./fs.js",
