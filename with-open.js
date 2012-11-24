@@ -2,10 +2,10 @@
 
 var close = require("./close")
 var open = require("./open")
+var decorate = require("./util/decorate")
+
 var concat = require("reducers/concat")
 var expand = require("reducers/expand")
-
-var decorate = require("./util/decorate")
 
 function withOpen(path, f, options) {
   // TODO: Close won't execute if part of the result is

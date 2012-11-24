@@ -2,6 +2,7 @@
 
 var decorate = require("./util/decorate")
 var makePath = require("./util/path")
+
 var fsbinding = process.binding("fs")
 
 

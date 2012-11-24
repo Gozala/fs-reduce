@@ -1,6 +1,7 @@
 "use strict";
 
 var decorate = require("./util/decorate")
+
 var expand = require("reducers/expand")
 var drop = require("reducers/drop")
 

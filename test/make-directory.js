@@ -1,15 +1,18 @@
 "use strict";
 
+var test = require("reducers/test/util/test")
+
+var path = require("path")
+
+var fixtures = require("./fixtures")
+
 var makeDirectory = require("../make-directory")
 var removeDirectory = require("../remove-directory")
 var stat = require("../stat")
-var reduce = require("reducers/reduce")
+
 var concat = require("reducers/concat")
-var path = require("path")
 var map = require("reducers/map")
-var fixtures = require("./fixtures")
 var capture = require("reducers/capture")
-var test = require("./helper")
 
 exports["test make directory"] = test(function(assert) {
   var async = false

@@ -1,7 +1,7 @@
 "use strict";
 
-var end = require("reducers/end")
-var accumulate = require("reducers/accumulate")
+var end = require("reducible/end")
+var reduce = require("reducible/reduce")
 
 var slicer = Array.prototype.slice
 
@@ -30,11 +30,11 @@ function DecoratedAsync(lambda, params) {
   this.lambda = lambda
   this.params = params
 }
-accumulate.define(DecoratedAsync, function(self, next, initial) {
+reduce.define(DecoratedAsync, function(self, next, initial) {
   try {
     self.lambda.apply(self, self.params.concat(function(error, value) {
       return error ? next(error, initial) :
-                     Array.isArray(value) ? accumulate(value, next, initial) :
+                     Array.isArray(value) ? reduce(value, next, initial) :
                      next(end, next(value, initial))
     }))
   } catch (error) {
@@ -49,10 +49,10 @@ function DecoratedSync(lambda, params) {
   this.lambda = lambda
   this.params = params
 }
-accumulate.define(DecoratedSync, function(self, next, initial) {
+reduce.define(DecoratedSync, function(self, next, initial) {
   try {
     var value = self.lambda.apply(self, self.params)
-    if (Array.isArray(value)) accumulate(value, next, initial)
+    if (Array.isArray(value)) reduce(value, next, initial)
     else next(end, next(value, initial))
   } catch (error) {
     next(end, next(error, initial))

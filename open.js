@@ -1,6 +1,7 @@
 "use strict";
 
-var cache = require("reducers/cache")
+var cache = require("cache-reduce")
+
 var decorate = require("./util/decorate")
 var makePath = require("./util/path")
 var makeMode = require("./util/mode")

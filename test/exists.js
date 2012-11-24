@@ -3,13 +3,13 @@
 var fs = require("fs")
 var exists = require("../exists")
 var fixtures = require("./fixtures")
-var reduce = require("reducers/reduce")
+var fold = require("reducers/fold")
 var capture = require("reducers/capture")
 
 exports["test async dir exists"] = function(assert, done) {
   var async = false
   var actual = exists(fixtures.join("."))
-  reduce(actual, function(_, actual) {
+  fold(actual, function(actual) {
     assert.ok(true, "directory exists")
     assert.ok(async, "operation should be async")
     done()
@@ -20,7 +20,7 @@ exports["test async dir exists"] = function(assert, done) {
 exports["test sync dir exists"] = function(assert, done) {
   var async = false
   var actual = exists(fixtures.join("."), { sync: true })
-  reduce(actual, function(_, actual) {
+  fold(actual, function(actual) {
     assert.ok(true, "directory exists")
     assert.ok(!async, "operation should be sync")
     done()
@@ -31,7 +31,7 @@ exports["test sync dir exists"] = function(assert, done) {
 exports["test async file exists"] = function(assert, done) {
   var async = false
   var actual = exists(fixtures.join("elipses.txt"))
-  reduce(actual, function(_, actual) {
+  fold(actual, function(actual) {
     assert.ok(true, "file exists")
     assert.ok(async, "operation should be async")
     done()
@@ -42,7 +42,7 @@ exports["test async file exists"] = function(assert, done) {
 exports["test sync file exists"] = function(assert, done) {
   var async = false
   var actual = exists(fixtures.join("elipses.txt"), { sync: true })
-  reduce(actual, function(_, actual) {
+  fold(actual, function(actual) {
     assert.ok(true, "file exists")
     assert.ok(!async, "operation should be sync")
     done()
@@ -54,7 +54,7 @@ exports["test sync file exists"] = function(assert, done) {
 exports["test async does not exists"] = function(assert, done) {
   var async = false
   var actual = exists(fixtures.join("does-not-exists"))
-  reduce(actual, function(_, actual) {
+  fold(actual, function(actual) {
     assert.equal(actual, false, "directory does not exists")
     assert.ok(async, "operation should be async")
     done()
@@ -65,7 +65,7 @@ exports["test async does not exists"] = function(assert, done) {
 exports["test sync does not exists"] = function(assert, done) {
   var async = false
   var actual = exists(fixtures.join("does-not-exists"), { sync: true })
-  reduce(actual, function(_, actual) {
+  fold(actual, function(actual) {
     assert.equal(actual, false, "directory does not exists")
     assert.ok(!async, "operation should be sync")
     done()

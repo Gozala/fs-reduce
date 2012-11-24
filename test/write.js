@@ -1,14 +1,15 @@
 "use strict";
 
-var print = require("reducers/debug/print")
+var test = require("reducers/test/util/test")
+
 var fixtures = require("./fixtures")
-var test = require("./helper")
+
 var unlink = require("../unlink")
 var write = require("../write")
 var read = require("../read")
 var decode = require("../decode")
 var encode = require("../encode")
-var reduce = require("reducers/reduce")
+
 var map = require("reducers/map")
 var concat = require("reducers/concat")
 var capture = require("reducers/capture")

@@ -4,8 +4,11 @@ var when = require("eventual/when")
 var defer = require("eventual/defer")
 var deliver = require("eventual/deliver")
 var eventual = require("eventual/decorate")
-var reduce = require("reducers/reduce")
+
+var fold = require("reducers/fold")
+
 var Buffer = require("buffer").Buffer
+
 var fsbinding = process.binding("fs")
 
 
@@ -33,7 +36,7 @@ function writer(fd, options) {
   // only once writes are done. Decorator also enables writing form arrays
   // of promises for example as it will wait on the `chunk` to be delivered
   // before actually running a function.
-  return reduce(input, eventual(function reduceWriterInput(wrote, chunk) {
+  return fold(input, eventual(function foldWriterInput(chunk, wrote) {
     var buffer = Buffer.isBuffer(chunk) ? chunk : Buffer(chunk)
     // If buffer is empty there's nothing to write, if not then dispatch
     // to `writeChunk` that is either asynchronous or synchronous depending

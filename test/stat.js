@@ -1,11 +1,14 @@
 "use strict";
 
+var test = require("reducers/test/util/test")
+
+var fixtures = require("./fixtures")
+
 var stat = require("../stat")
+
 var concat = require("reducers/concat")
 var capture = require("reducers/capture")
 var map = require("reducers/map")
-var fixtures = require("./fixtures")
-var test = require("./helper")
 
 function Stat(stat) {
   return {

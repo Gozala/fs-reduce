@@ -1,12 +1,14 @@
 "use strict";
 
 var fixtures = require("./fixtures")
-var test = require("./helper")
+
+var test = require("reducers/test/util/test")
+
 var unlink = require("../unlink")
 var write = require("../write")
 var read = require("../read")
 var decode = require("../decode")
-var reduce = require("reducers/reduce")
+
 var map = require("reducers/map")
 var concat = require("reducers/concat")
 var capture = require("reducers/capture")

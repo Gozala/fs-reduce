@@ -1,8 +1,10 @@
 "use strict";
 
+var test = require("reducers/test/util/test")
+
 var open = require("../open")
+
 var fixtures = require("./fixtures")
-var test = require("./helper")
 
 var capture = require("reducers/capture")
 var concat = require("reducers/concat")

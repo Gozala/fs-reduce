@@ -1,16 +1,19 @@
 "use strict";
 
 var fs = require("fs")
-var stat = require("../stat")
-var reduce = require("reducers/reduce")
-var concat = require("reducers/concat")
 var path = require("path")
-var map = require("reducers/map")
+
 var fixtures = require("./fixtures")
-var capture = require("reducers/capture")
-var test = require("./helper")
+
+var test = require("reducers/test/util/test")
+
+var stat = require("../stat")
 var chmod = require("../chmod")
 
+
+var concat = require("reducers/concat")
+var map = require("reducers/map")
+var capture = require("reducers/capture")
 var isWindows = process.platform === "win32"
 
 // Need to hijack fs.open/close to make sure that things

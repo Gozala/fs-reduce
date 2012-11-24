@@ -1,13 +1,16 @@
 "use strict";
 
 var decorate = require("./util/decorate")
+
 var expand = require("reducers/expand")
-var reducible = require("reducers/reducible")
+
 var when = require("eventual/when")
 var defer = require("eventual/defer")
 var deliver = require("eventual/deliver")
-var isReduced = require("reducers/is-reduced")
-var end = require("reducers/end")
+
+var reducible = require("reducible/reducible")
+var isReduced = require("reducible/is-reduced")
+var end = require("reducible/end")
 
 var fsbinding = process.binding("fs")
 var _read = decorate(fsbinding.read)
